@@ -64,7 +64,7 @@ namespace eventos.Controllers
         }
         [Authorize(Policy = "Poli")]
         public IActionResult NovoEvento(){
-            ViewBag.Generos = database.Generos.ToList();
+            ViewBag.Generos = database.Generos.Where(genero => genero.Status == true).ToList();
             ViewBag.Casas = database.Casas.Where(casa => casa.Status == true).ToList();
             var casas = database.Casas.FirstOrDefault(c => c.Status);
             var generos = database.Generos.FirstOrDefault(g => g.Status);
